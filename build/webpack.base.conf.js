@@ -1,4 +1,4 @@
-var path = require('path')
+﻿var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -9,7 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.ts'
   },
   output: {
     path: config.build.assetsRoot,
@@ -41,10 +41,18 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+      //{
+      //  test: /\.js$/,
+      //  loader: 'babel-loader',
+      //  include: [resolve('src'), resolve('test')]
+      //},
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

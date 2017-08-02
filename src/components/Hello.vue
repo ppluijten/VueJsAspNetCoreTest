@@ -19,25 +19,12 @@
     </ul>
   </div>
 </template>
-<script>
-  export default {
-    name: 'hello',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    },
-    // Send a request to /api/hello
-    created () {
-      this.$http
-        .get('/api/hello')
-        .then((res) => {
-          this.msg = res.body.message
-        })
-        .catch((ex) => console.log(ex))
-    }
-  }
+
+<script lang="ts">
+import Hello from './Hello.ts'
+export default Hello
 </script>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   h1, h2 {
